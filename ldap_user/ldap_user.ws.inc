@@ -83,7 +83,7 @@ function ldap_user_ws($action, $direction_tag, $drupal_user_name_or_dn, $key) {
     case 'create':
       if ($direction = LDAP_USER_PROV_DIRECTION_TO_DRUPAL_USER) {
         $user_edit['name'] = $drupal_user_name;
-        $new_account = $ldap_user_conf->provisionDrupalAccount($account, $user_edit, $ldap_user, TRUE);
+        $new_account = $ldap_user_conf->provisionDrupalAccount($user_edit, $account, $ldap_user, true);
         // @todo return boolean on first line, not human readable message
         $text = ($new_account) ? 'Created Account ' . $drupal_user_name : 'Fails to Create Account ' . $drupal_user_name;
         return ldap_user_ws_out([(boolean) ($new_account), $text]);

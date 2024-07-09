@@ -1028,9 +1028,9 @@ class LdapUserConf {
    * Given a drupal account, query ldap and get all user fields and save user account
    * (note: parameters are in odd order to match synchDrupalAccount handle)
    *
-   * @param array $account
-   *   drupal account object or null.
    * @param array $user_edit
+   *   drupal account object or null.
+   * @param array $account
    *   drupal edit array in form user_save($account, $user_edit) would take.
    * @param array $ldap_user
    *   as user's ldap entry.  passed to avoid requerying ldap in cases where already present.
@@ -1043,7 +1043,7 @@ class LdapUserConf {
    *
    *   $user_edit data returned by reference
    */
-  public function provisionDrupalAccount($account = FALSE, &$user_edit, $ldap_user = NULL, $save = TRUE) {
+  public function provisionDrupalAccount(&$user_edit, $account = FALSE, $ldap_user = NULL, $save = TRUE) {
 
     $watchdog_tokens = [];
     /**

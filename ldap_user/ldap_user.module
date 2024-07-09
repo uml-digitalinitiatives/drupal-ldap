@@ -755,7 +755,7 @@ function ldap_user_provision_to_drupal($ldap_user, $user_edit = []) {
   $sid = $ldap_user['sid'];
   $ldap_user_conf = ldap_user_conf();
   $account = NULL;
-  $ldap_user_conf->provisionDrupalAccount($account, $user_edit, $ldap_user, TRUE);
+  $ldap_user_conf->provisionDrupalAccount($user_edit, $account, $ldap_user, true);
 
 }
 

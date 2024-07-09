@@ -258,7 +258,7 @@ class LdapUserUnitTests extends LdapTestCase {
     $user_edit = ['name' => 'hpotter'];
 
     // Test method provisionDrupalAccount()
-    $hpotter = $ldap_user_conf->provisionDrupalAccount($account, $user_edit, NULL, TRUE);
+    $hpotter = $ldap_user_conf->provisionDrupalAccount($user_edit, $account, null, true);
 
     $hpotter = user_load_by_name('hpotter');
 
@@ -346,7 +346,7 @@ class LdapUserUnitTests extends LdapTestCase {
     $this->testFunctions->setFakeServerUserAttribute('activedirectory1', 'cn=hpotter,ou=people,dc=hogwarts,dc=edu', 'samaccountname', 'hpotter-granger', 0);
     $account = NULL;
     $user_edit = ['name' => 'hpotter-granger'];
-    $hpottergranger = $ldap_user_conf->provisionDrupalAccount($account, $user_edit, NULL, TRUE);
+    $hpottergranger = $ldap_user_conf->provisionDrupalAccount($user_edit, $account, null, true);
 
     $this->testFunctions->setFakeServerUserAttribute('activedirectory1', 'cn=hpotter,ou=people,dc=hogwarts,dc=edu', 'samaccountname', 'hpotter', 0);
     $pass = (is_object($hpottergranger) && is_object($hpotter) && $hpotter->uid == $hpottergranger->uid);
@@ -372,7 +372,7 @@ class LdapUserUnitTests extends LdapTestCase {
     $ldap_server->refreshFakeData();
     $account = NULL;
     $user_edit = ['name' => 'hpotter'];
-    $hpotter = $ldap_user_conf->provisionDrupalAccount($account, $user_edit, NULL, TRUE);
+    $hpotter = $ldap_user_conf->provisionDrupalAccount($user_edit, $account, null, true);
 
   }
 
@@ -614,7 +614,7 @@ class LdapUserUnitTests extends LdapTestCase {
         // 3. create new user with provisionDrupalAccount.
         $account = NULL;
         $user_edit = ['name' => $username];
-        $result = $ldap_user_conf->provisionDrupalAccount($account, $user_edit, NULL, TRUE);
+        $result = $ldap_user_conf->provisionDrupalAccount($user_edit, $account, null, true);
         list($user_object, $user_entity) = ldap_user_load_user_acct_and_entity($username);
         if ($property_name) {
           // If intended to synch.
