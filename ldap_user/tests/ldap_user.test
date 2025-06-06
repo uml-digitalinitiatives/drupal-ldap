@@ -1214,7 +1214,7 @@ class LdapUserIntegrationTests extends LdapTestCase {
 
     $account = NULL;
     $user_edit = ['name' => $name];
-    $user = $ldap_user_conf->provisionDrupalAccount($account, $user_edit, NULL, TRUE);
+    $user = $ldap_user_conf->provisionDrupalAccount($user_edit, $account, NULL, TRUE);
 
     return user_load($user->uid, TRUE);
   }
